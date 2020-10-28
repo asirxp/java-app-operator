@@ -1,0 +1,9 @@
+apiVersion: devops.k8s.com/v1alpha1
+kind: Sample
+metadata:
+  name: java-app-sample
+spec:
+  # Add fields here
+  size: 2
+  bodyvalue: "[AsirXing] Response received from POD: {{env:HOSTNAME}}"
+  image: "devbox.cn.ibm.com:5000/asirxing/java-sample-app:v0.1"

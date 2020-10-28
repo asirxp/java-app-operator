@@ -1,0 +1,9 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: java-app-operator-catalog
+spec:
+  sourceType: grpc
+  image: asirxing/java-app-operator-index:0.1.0
+  displayName: Java APP Operator Catalog
+  publisher: Open Source (by AsirXing)

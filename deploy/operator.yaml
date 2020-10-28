@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-app-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: java-app-operator
+  template:
+    metadata:
+      labels:
+        name: java-app-operator
+    spec:
+      serviceAccountName: java-app-operator
+      containers:
+        - name: java-app-operator
+          # Replace this with the built image name
+          image: asirxing/java-app-operator:0.1.0
+          command:
+          - java-app-operator
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "java-app-operator"
